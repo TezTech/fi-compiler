@@ -5,7 +5,7 @@ fi is a powerful, smart contract language for Tezos that compiles down to valid 
 Check us out online http://173.254.236.122
 
 ### Current Goals
-* Finalize styling/syntax and language related rules
+* ~~Finalize styling/syntax and language related rules~~
 * Complete initial milestones for functionality
 * Complete error handling (with type checking)
 * Basic optimization of compiled code
