@@ -132,3 +132,13 @@ output
 
 ## Live Testing
 A contract will be added to the alphanet in the near future, with a faucet feature to allow users to better test token standards on the alphanet
+
+## Future Development
+We are looking into streamlining the return response, hoping to use some sort of union like we do with the input parameter. We will the look to include other features suggested by the wider community.
+
+We also want to look into how viable this contract is in relation to security.
+
+In general, our fi compiler is still a work in progress, so this contract could change as we further develop and modify fi.
+
+### Support Us
+Let me know if you can help with our project in any way. Please consider donating to help us develop this, and other Tezos related tools: Bitcoin: 1KSiyfgs5XwTZjaLpmCTHxonsyXMx383P1
