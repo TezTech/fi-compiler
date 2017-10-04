@@ -1,6 +1,6 @@
 # Draft Token Standard for Tezos
 
-The following Smart Contract is built with fi, and provides an initial specification for a Tezos Token Standard. You can view the compiled Michelson code here.
+The following Smart Contract is built with fi, and provides an initial specification for a Tezos Token Standard. You can view the compiled [Michelson code here](https://raw.githubusercontent.com/stephenandrews/fi/master/token_standard.tz).
 
 ```javascript
 {(map key_hash nat)} storage.balances;
@@ -51,6 +51,8 @@ You can then run tests using:
 ./alphanet client run program 'tts' on storage 'STORAGE' and input 'INPUT'
 ```
 Where STORAGE and INPUT are described below.
+
+#### Alternatively, you can also [test here](https://try-michelson.com/)
 
 ### Storage
 Use the following string for storage
