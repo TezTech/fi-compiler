@@ -40,7 +40,7 @@ string storage.symbol;
 ## Testing
 
 I've run tests on alphanet using the Tezos utility tools - you can too. You need to add the program to your alphanet client 
-#### (NOTE: replace ./alphanet client with tezos-client if you are not using he docker version): 
+#### (NOTE: replace ./alphanet client with tezos-client if you are not using the docker version): 
 ```
 ./alphanet client remember program 'tts' 'SRC'
 ```
