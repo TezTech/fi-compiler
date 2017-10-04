@@ -39,11 +39,12 @@ string storage.symbol;
 
 ## Testing
 
-I've run tests on alphanet using the Tezos utility tools - you can too. You need to add the program to your alphanet client (NOTE: replace ./alphanet client with tezos-client if you are not using he docker version): 
+I've run tests on alphanet using the Tezos utility tools - you can too. You need to add the program to your alphanet client 
+#### (NOTE: replace ./alphanet client with tezos-client if you are not using he docker version): 
 ```
 ./alphanet client remember program 'tts' 'SRC'
 ```
-Use the compiled Michelson code as SRC.
+Use the compiled Michelson code as SRC (either as a text, or store the contract as a file and reference it that way). Once you've run the above, you can then reference the contract using 'tts'
 
 You can then run tests using:
 ```
@@ -56,7 +57,9 @@ Use the following string for storage
 ```
 Pair (Map (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 10000)) (Pair 10000 (Pair 8 (Pair "Test" "TST")))
 ```
-Replace "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" with the key of the contract your are making requests from - essentially you want to mimic the result of the SOURCE call, giving yourself access to all tokens. Note the right side of the main pair is the token details:
+Replace "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" with the key of the contract your are making requests from - essentially you want to mimic the result of the SOURCE call, giving yourself access to all tokens. 
+
+Note the right side of the main pair is the token details:
 ```
 (Pair 10000 (Pair 8 (Pair "Test" "TST")))
 
@@ -67,28 +70,14 @@ name = "Test";
 symbol = "TST"
 ```
 
-
 #### Input: Get Token Details
 ```
 Left Unit
 ```
 This will return the stored token detals
 
-#### Input: Get Balance
+##### Example
 ```
-Right (Left "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx")
-```
-This will return the balance for tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx - fails if no balance. You can change this to any valid tezos PKH
-
-#### Input: Transfer To
-```
-Right (Right (Pair "tz1bq4LvntnGei8YqERbnBnk9u32KFEupJb5" 1000))
-```
-This will initiate a transfer to the indicated PKH address of the inputed amount. Returns bool true on success
-
-## Examples
-```
-# Get Token Details
 ./alphanet client run program 'tts' on storage 'Pair (Map (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 10000)) (Pair 10000 (Pair 8 (Pair "Test" "TST")))' and input 'LEFT UNIT'
 
 # Returns
@@ -99,8 +88,16 @@ storage
 output
   (Pair (Some 10000)
      (Pair (Some 8) (Pair (Some "Test") (Pair (Some "TST") (Pair None None)))))
-     
-# Get Balance
+```
+
+#### Input: Get Balance
+```
+Right (Left "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx")
+```
+This will return the balance for tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx - fails if no balance. You can change this to any valid tezos PKH
+
+##### Example
+```
 ./alphanet client run program 'tts' on storage 'Pair (Map (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 10000)) (Pair 10000 (Pair 8 (Pair "Test" "TST")))' and input 'Right (Left "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx")'
 
 # Returns
@@ -109,8 +106,16 @@ storage
      (Pair 10000 (Pair 8 (Pair "Test" "TST"))))
 output
   (Pair None (Pair None (Pair None (Pair None (Pair (Some 10000) None)))))
-  
-# Transfer To
+```
+
+#### Input: Transfer To
+```
+Right (Right (Pair "tz1bq4LvntnGei8YqERbnBnk9u32KFEupJb5" 1000))
+```
+This will initiate a transfer to the indicated PKH address of the inputed amount. Returns bool true on success
+
+##### Example
+```
 ./alphanet client run program 'tts' on storage 'Pair (Map (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 10000)) (Pair 10000 (Pair 8 (Pair "Test" "TST")))' and input 'Right (Right (Pair "tz1bq4LvntnGei8YqERbnBnk9u32KFEupJb5" 1000))'
 
 # Returns
