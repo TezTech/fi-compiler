@@ -1,0 +1,32 @@
+{(map key_hash nat)} storage.balances;
+nat storage.total_supply;
+int storage.decimals;
+string storage.name;
+string storage.symbol;
+
+# Token Info
+@(){
+    nat return.total_supply = storage.total_supply;
+    int return.decimals = storage.decimals;
+    string return.name = storage.name;
+    string return.symbol = storage.symbol;
+}
+# Get Balance
+@(key_hash user){
+    if (in(storage.balances, input.user) != bool True) throw;
+    nat return.balance = val(storage.balances, input.user);
+}
+# Transfer To
+@(key_hash toAddress, nat amount){
+    key_hash var.me = manager(SOURCE);
+    if (in(storage.balances, var.me) != bool True) throw;
+    if (in(storage.balances, input.toAddress) != bool True) {
+        storage.balances.update(input.toAddress, nat 0);
+    }
+    nat var.bal = val(storage.balances, var.me);
+    if (var.bal < input.amount) throw;
+    nat var.balTo = val(storage.balances, input.toAddress);
+    storage.balances.update(var.me, _nat(sub(var.bal, input.amount)));
+    storage.balances.update(input.toAddress, add(var.balTo, input.amount));
+    bool return.success = bool True;
+}
