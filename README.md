@@ -12,6 +12,7 @@ Check us out online https://stephenandrews.github.io/fi/
 
 ### Other Goals
 * ~~Develop DOCS for fi~~
+* ~~Integrated JSON object~~
 * Complete website (online editor/compiler, stack trace, and run functionality)
 * Tidy up and bug fix compilers
 * Release compilers to github for public use
