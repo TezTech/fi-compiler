@@ -1,32 +1,28 @@
-{(map key_hash nat)} storage.balances;
-nat storage.total_supply;
-int storage.decimals;
-string storage.name;
-string storage.symbol;
+const nat total_supply "100";
+const nat decimals "100";
+const string name "Tezos Test Token";
+const string symbol "TTT";
 
-# Token Info
-@(){
-    nat return.total_supply = storage.total_supply;
-    int return.decimals = storage.decimals;
-    string return.name = storage.name;
-    string return.symbol = storage.symbol;
+storage map(address => nat) balances;
+
+@balanceOf(address user) returns (nat balance){
+  if (storage.balances.in(input.user)){
+    return.balance = storage.balances.get(input.user);
+  } else {
+    return.balance = nat 0;
+  }
 }
-# Get Balance
-@(key_hash user){
-    if (in(storage.balances, input.user) != bool True) throw;
-    nat return.balance = val(storage.balances, input.user);
-}
-# Transfer To
-@(key_hash toAddress, nat amount){
-    key_hash var.me = manager(SOURCE);
-    if (in(storage.balances, var.me) != bool True) throw;
-    if (in(storage.balances, input.toAddress) != bool True) {
-        storage.balances.update(input.toAddress, nat 0);
-    }
-    nat var.bal = val(storage.balances, var.me);
-    if (var.bal < input.amount) throw;
-    nat var.balTo = val(storage.balances, input.toAddress);
-    storage.balances.update(var.me, _nat(sub(var.bal, input.amount)));
-    storage.balances.update(input.toAddress, add(var.balTo, input.amount));
-    bool return.success = bool True;
+@transfer(address toUser, nat amount){
+  if (!storage.balances.in(SENDER)) throw;
+  if (storage.balances.in(input.toUser)) {
+    let nat toBal = storage.balances.get(input.toUser);    
+  } else {
+    let nat toBal = nat 0;    
+  }
+  let nat fromBal = storage.balances.get(SENDER);
+  if (fromBal < input.amount) throw;
+  toBal.add(input.amount);
+  fromBal.sub(input.amount);
+  storage.balances.push(SENDER, abs(fromBal));
+  storage.balances.push(input.toUser, toBal);
 }
