@@ -3,37 +3,33 @@
 The following Smart Contract is built with fi, and provides an initial specification for a Tezos Token Standard. You can view the compiled [Michelson code here](https://raw.githubusercontent.com/stephenandrews/fi/master/token_standard.tz).
 
 ```javascript
-{(map key_hash nat)} storage.balances;
-nat storage.total_supply;
-int storage.decimals;
-string storage.name;
-string storage.symbol;
+const nat total_supply "100";
+const nat decimals "100";
+const string name "Tezos Test Token";
+const string symbol "TTT";
 
-# Token Info
-@(){
-    nat return.total_supply = storage.total_supply;
-    int return.decimals = storage.decimals;
-    string return.name = storage.name;
-    string return.symbol = storage.symbol;
+storage map(address => nat) balances;
+
+@balanceOf(address user) returns (nat balance){
+  if (storage.balances.in(input.user)){
+    return.balance = storage.balances.get(input.user);
+  } else {
+    return.balance = nat 0;
+  }
 }
-# Get Balance
-@(key_hash user){
-    if (in(storage.balances, input.user) != bool True) throw;
-    nat return.balance = val(storage.balances, input.user);
-}
-# Transfer To
-@(key_hash toAddress, nat amount){
-    key_hash var.me = manager(SOURCE);
-    if (in(storage.balances, var.me) != bool True) throw;
-    if (in(storage.balances, input.toAddress) != bool True) {
-        storage.balances.update(input.toAddress, nat 0);
-    }
-    nat var.bal = val(storage.balances, var.me);
-    if (var.bal < input.amount) throw;
-    nat var.balTo = val(storage.balances, input.toAddress);
-    storage.balances.update(var.me, _nat(sub(var.bal, input.amount)));
-    storage.balances.update(input.toAddress, add(var.balTo, input.amount));
-    bool return.success = bool True;
+@transfer(address toUser, nat amount){
+  if (!storage.balances.in(SENDER)) throw;
+  if (storage.balances.in(input.toUser)) {
+    let nat toBal = storage.balances.get(input.toUser);    
+  } else {
+    let nat toBal = nat 0;    
+  }
+  let nat fromBal = storage.balances.get(SENDER);
+  if (fromBal < input.amount) throw;
+  toBal.add(input.amount);
+  fromBal.sub(input.amount);
+  storage.balances.push(SENDER, abs(fromBal));
+  storage.balances.push(input.toUser, toBal);
 }
 ```
 
@@ -57,81 +53,109 @@ Where STORAGE and INPUT are described below.
 ### Storage
 Use the following string for storage
 ```
-Pair (Map (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 10000)) (Pair 10000 (Pair 8 (Pair "Test" "TST")))
+(Map (Item "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs" 1000))
 ```
-Replace "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" with the key of the contract your are making requests from - essentially you want to mimic the result of the SOURCE call, giving yourself access to all tokens. 
+Replace "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs" with the key of the contract your are making requests from - essentially if you want to mimic the result of the SOURCE call, giving yourself access to all tokens.
 
-Note the right side of the main pair is the token details:
-```
-(Pair 10000 (Pair 8 (Pair "Test" "TST")))
-
-WHERE
-total_supply = 10000;
-decimals = 8;
-name = "Test";
-symbol = "TST"
-```
-
-#### Input: Get Token Details
-```
-Left Unit
-```
-This will return the stored token detals
-
-##### Example
-```
-./alphanet client run program 'tts' on storage 'Pair (Map (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 10000)) (Pair 10000 (Pair 8 (Pair "Test" "TST")))' and input 'LEFT UNIT'
-
-# Returns
-storage
-  (Pair
-     (Map (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 10000))
-     (Pair 10000 (Pair 8 (Pair "Test" "TST"))))
-output
-  (Pair (Some 10000)
-     (Pair (Some 8) (Pair (Some "Test") (Pair (Some "TST") (Pair None None)))))
-```
+We use to include the token details as a contract call, however to save on GAS we've moved this to a constant, which we can pull from using the new JSON header line.
 
 #### Input: Get Balance
 ```
-Right (Left "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx")
+Pair 0 (Left "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs")
 ```
-This will return the balance for tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx - fails if no balance. You can change this to any valid tezos PKH
+This will return the balance for tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs, 0 if no balance exists. You can change this to any valid tezos PKH/tz1 address
 
 ##### Example
 ```
-./alphanet client run program 'tts' on storage 'Pair (Map (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 10000)) (Pair 10000 (Pair 8 (Pair "Test" "TST")))' and input 'Right (Left "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx")'
+./alphanet client run program 'tts' on storage '(Map (Item "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs" 1000))' and input 'Pair 0 (Left "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs")'
 
 # Returns
 storage
-  (Pair (Map (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 10000))
-     (Pair 10000 (Pair 8 (Pair "Test" "TST"))))
+  (Map (Item "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs" 1000))
 output
-  (Pair None (Pair None (Pair None (Pair None (Pair (Some 10000) None)))))
+  (Some 1000)
 ```
 
 #### Input: Transfer To
 ```
-Right (Right (Pair "tz1bq4LvntnGei8YqERbnBnk9u32KFEupJb5" 1000))
+Pair 1 (Right (Pair "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs" 100))
 ```
-This will initiate a transfer to the indicated PKH address of the inputed amount. Returns bool true on success
+This will initiate a transfer to the indicated PKH address of the inputed amount.
 
 ##### Example
 ```
-./alphanet client run program 'tts' on storage 'Pair (Map (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 10000)) (Pair 10000 (Pair 8 (Pair "Test" "TST")))' and input 'Right (Right (Pair "tz1bq4LvntnGei8YqERbnBnk9u32KFEupJb5" 1000))'
+./alphanet client run program 'tts' on storage '(Map (Item "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs" 1000))' and input 'Pair 1 (Right (Pair "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs" 100))'
 
 # Returns
 storage
-  (Pair
-     (Map (Item "tz1bq4LvntnGei8YqERbnBnk9u32KFEupJb5" 1000)
-        (Item "tz1KqTpEZ7Yob7QbPE4Hy4Wo8fHG8LhKxZSx" 9000))
-     (Pair 10000 (Pair 8 (Pair "Test" "TST"))))
+  (Map (Item "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs" 100)
+     (Item "tz1L2deDTsmbHek73DsQb1ynxvZn3ZFThZTs" 900))
 output
-  (Pair None (Pair None (Pair None (Pair None (Pair None (Some True))))))
+  None
 ```
 
+## Allowances/Approve
+We're working on the ability to approve an allowance, similar to ERC20 tokens.
+
+## JSON Header Line
+We've started to implement a standard where we take a JSON object which contains additional meta data to aid in interfacing with fi compiled smart contracts. We place a gzipped + base64encodes JSON string on the first line of every contract, preceeded by a hashbang (#!). This is ignored within Michelson, but can be accessed via the RPC client and converted back into the original JSON object.
+
+```
+#!H4sIAAAAAAAAA12OOw7DMAxD76LZJ8glOnUyPKi2DARo5MKip8B3r/oL2o4E+R640ybgwmBaYgpUh2asTY2WnS58Zc1yqo+w6m3AR5GGSadAXEoXM0qOdcHo+mzfkA+U4eUMhM5q1aEfDdr5TxQi8daG4oC/zGm6KfszsMJebz+/5x0/boBjxwAAAA==
+```
+
+Which decodes to:
+
+```javascript
+{
+  "metadata": [
+    
+  ],
+  "functions": {
+    "balanceOf": {
+      "input": [
+        [
+          "user",
+          "address"
+        ]
+      ],
+      "return": [
+        [
+          "balance",
+          "nat"
+        ]
+      ]
+    },
+    "transfer": {
+      "input": [
+        [
+          "toUser",
+          "address"
+        ],
+        [
+          "amount",
+          "nat"
+        ]
+      ],
+      "return": [
+        
+      ]
+    }
+  },
+  "constants": [
+    
+  ],
+  "data": [
+    
+  ]
+}
+```
+This is currently a work in progress, but the aim is to provide information on the contract making it easier for 3rd party apps to easily interface with the contract.
+
+We are currently working on a script which would take in a JSON object representing a contract call, and utilising the above JSON header, return a valid Michelson input to be sent to a smart contract. We'll have the same scripts setup for reading a contracts storage (as JSON) and the return/output.
+
 ## Live Testing
-A contract will be added to the alphanet in the near future, with a faucet feature to allow users to better test token standards on the alphanet
+A contract will be added to the alphanet in the near future, with a faucet feature to allow users to better test token standards on the alphanet.
 
 ## Future Development
 We are looking into streamlining the return response, hoping to use some sort of union like we do with the input parameter. We will the look to include other features suggested by the wider community.
