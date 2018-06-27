@@ -1,28 +1,22 @@
-const nat total_supply "100";
-const nat decimals "100";
-const string name "Tezos Test Token";
-const string symbol "TTT";
+storage bmap(address=>nat) balances;
+storage string name;
+storage string sumbol;
+storage nat decimals;
 
-storage map(address => nat) balances;
-
-@balanceOf(address user) returns (nat balance){
-  if (storage.balances.in(input.user)){
-    return.balance = storage.balances.get(input.user);
-  } else {
-    return.balance = nat 0;
+public transfer(address to, nat amount, bool toContract, bytes contractData){
+  assert(!storage.balances.in(SENDER)) string "No token balance found";
+  let nat senderBalance = storage.balances.get(SENDER);
+  assert(senderBalance < input.amount) string "Balance is to low";
+  let nat receiverBalance = nat 0;
+  if (storage.balances.in(input.to)){
+    receiverBalance = storage.balances.get(input.to);
   }
-}
-@transfer(address toUser, nat amount){
-  if (!storage.balances.in(SENDER)) throw;
-  if (storage.balances.in(input.toUser)) {
-    let nat toBal = storage.balances.get(input.toUser);    
-  } else {
-    let nat toBal = nat 0;    
+  senderBalance = sub(senderBalance, input.amount);
+  senderBalance = abs(senderBalance);
+  receiverBalance.add(input.amount);
+  storage.balances.push(SENDER, senderBalance);
+  storage.balances.push(input.to, receiverBalance);
+  if (input.toContract){
+    transfer(mutez 0, input.to, input.contractData);
   }
-  let nat fromBal = storage.balances.get(SENDER);
-  if (fromBal < input.amount) throw;
-  toBal.add(input.amount);
-  fromBal.sub(input.amount);
-  storage.balances.push(SENDER, abs(fromBal));
-  storage.balances.push(input.toUser, toBal);
 }
