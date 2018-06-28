@@ -1,4 +1,4 @@
-storage bmap(address=>nat) balances;
+storage map(address=>nat) balances;
 storage string name;
 storage string sumbol;
 storage nat decimals;
