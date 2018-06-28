@@ -5,6 +5,7 @@ storage nat decimals;
 
 public transfer(address to, nat amount, ?bytes contractData){
   assert(!storage.balances.in(SENDER)) string "No token balance found";
+  assert(input.to == SENDER) string "Sender is receiver";
   let nat senderBalance = storage.balances.get(SENDER);
   assert(senderBalance < input.amount) string "Balance is to low";
   let nat receiverBalance = nat 0;
