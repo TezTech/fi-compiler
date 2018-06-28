@@ -3,7 +3,7 @@ storage string name;
 storage string sumbol;
 storage nat decimals;
 
-public transfer(address to, nat amount, bool toContract, ?bytes contractData){
+public transfer(address to, nat amount, ?bytes contractData){
   assert(!storage.balances.in(SENDER)) string "No token balance found";
   let nat senderBalance = storage.balances.get(SENDER);
   assert(senderBalance < input.amount) string "Balance is to low";
@@ -16,7 +16,7 @@ public transfer(address to, nat amount, bool toContract, ?bytes contractData){
   receiverBalance.add(input.amount);
   storage.balances.push(SENDER, senderBalance);
   storage.balances.push(input.to, receiverBalance);
-  if (input.toContract){
+  isset(input.contractData){
     transfer(mutez 0, input.to, input.contractData);
   }
 }
