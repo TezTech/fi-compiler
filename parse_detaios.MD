@@ -4,7 +4,7 @@ storage type name;
 const type name value;
 obj name(<var type...>)
 public name(<var types...>){<code>}
-private name(<var types...>) returns (<var types...>){<code>}
+private name(<var types...>) ?returns (<var types...>){<code>}
 ```
 Code
 ```javascript
@@ -19,8 +19,9 @@ Guide
 ```javascript
 <var type> = type name
 <var types...> = type name, type name...
-<var> == variable accerss, e.g. storage.xx, input.xx, xx.yy.zz...
+<var> = variable accerss, e.g. storage.xx, input.xx, xx.yy.zz...
 <val> = any evaluated code, either a <var>, result of a function, or a literal
-<fn> is a function that doesn't return anything
+<fn> = a function that doesn't return anything
+? = optional
 ```
 
