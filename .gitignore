@@ -4,3 +4,4 @@ tests/
 index.html
 test/*
 test.html
+dist/
