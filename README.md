@@ -2,7 +2,7 @@
 
 fi (pronounced fee) is a powerful, smart contract language for Tezos that compiles down to valid and verifiable Michelson code. fi is currently in early alpha stages - please use at your own risk, and validate any compiled code.
 
-[Check us out online](https://fi-code.com), or read through our [Documentation](https://fi-code.gitbooks.io/documentation/content/) to get started.
+[Check us out online](https://fi-code.com), or read through our [Documentation](https://learn.fi-code.com/) to get started.
 
 ## Installation
 
