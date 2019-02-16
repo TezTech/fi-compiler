@@ -4,11 +4,13 @@
   "description": "Core compiler library for fi, a high-level language for Michelson",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "jest": "^24.1.0",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3"
