@@ -11,6 +11,7 @@ core.parse = require("./lib/parse")(core);
 core.compile = require("./lib/compile")(core);
 core.abi = require("./lib/abi")(core);
 
+
 module.exports = {
 	compile: core.compile.script,
 	abi : core.abi,
