@@ -1,0 +1,120 @@
+storage bmap[nat=>address] bmaptest;
+storage nat test;
+
+entry TestInput(nat test1){
+	storage.test = input.test1;
+}
+entry TestKey(){
+	let key test1 = key "edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym";
+	let pkh test2 = to_pkh(key "edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym");
+	let address test3 = to_address(key "edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym");
+	let contract[unit] test4 = to_contract(test1);
+	let address test5 = to_address(test4);
+
+	transfer(test1, mutez 0);
+	transfer(test2, mutez 0);
+	transfer(test3, mutez 0);
+	transfer(test4, mutez 0);
+	transfer(test5, mutez 0);
+	
+	let bool test6 = verify(bytes 0x0500, signature "edsigtgjPezMVW9zCu8ny4uMaAsT3gqbRANSNAzVBvZoFXx3ZiPifbLUUthdj4tewcCvJf3HpPfMTnML73hCi6UnFvZpvWsqTBk", test1);
+}
+entry TestSignature(){
+	let bool test1 = verify(bytes 0x0500, signature "edsigtgjPezMVW9zCu8ny4uMaAsT3gqbRANSNAzVBvZoFXx3ZiPifbLUUthdj4tewcCvJf3HpPfMTnML73hCi6UnFvZpvWsqTBk", key "edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym");
+}
+entry TestPkh(){
+	let pkh test1 = pkh "tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM";
+	let address test2 = to_address(pkh "tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM");
+	let contract[unit] test3 = to_contract(test1);
+
+	transfer(test1, mutez 0);
+	transfer(test2, mutez 0);
+	transfer(test3, mutez 0);
+	
+	delegate();
+	delegate(test1);
+	delegate(pkh "tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM");
+}
+entry TestString(){
+	let string test1 = string "Hello World";
+	let string test2 = concat(string "Hello World", test1);
+	let nat test3 = test1.length();
+	let string test4 = slice(test2, nat 0, nat 10);
+}
+entry TestNumbers(){
+	let nat test1 = nat 100;
+	let nat test2 = add(test1, nat 2, nat 3);
+	let nat test3 = to_nat(sub(add(to_int(mutez 0), int 2), int 3, nat 5));
+	let int test4 = to_int(mutez 0);
+	let nat test5 = to_nat(sub(add(to_int(mutez 0), int 2), int 3, nat 5));
+	let nat test6 = abs(to_int(test2));
+}
+entry TestTimestamp(){
+	let timestamp test1 = NOW;
+	let timestamp test2 = add(test1, int 100);
+	let int test3 = sub(test2, test1);
+	let timestamp test4 = add(int 200, NOW, sub(NOW, test1));
+}
+entry TestMutez(){
+	let mutez test1 = AMOUNT;
+	let mutez test2 = add(test1, AMOUNT, BALANCE);
+}
+entry TestBool(){
+	let bool test1 = bool True;
+	if (test1 == bool False){
+		assert(bool True);
+		assert(test1);
+	}
+}
+entry TestList(){
+	let address[] test1 = new list(address);
+	test1.push(SENDER);
+	let address test2 = test1.pop();
+	let nat test3 = test1.length();
+}
+entry TestSet(){
+	let set[nat] test1 = new set(nat);
+	test1.push(nat 100);
+	test1.push(nat 200);
+	test1.push(nat 300);
+	let nat test2 = nat 100;
+	if (test1.in(test2)){
+		test1.drop(test2);
+	}
+	let nat test3 = test1.length();
+}
+entry TestMap(){
+	let map[nat=>address] test1 = new map(nat, address);
+	test1.push(nat 1, SENDER);
+	test1.push(nat 2, address "tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM");
+	let address test2 = test1.get(nat 1);
+	if (test1.in(nat 1)){
+		test1.drop(nat 2);
+	}
+	let nat test3 = test1.length();
+}
+entry TestBigmap(){
+	storage.bmaptest.push(nat 1, SENDER);
+	storage.bmaptest.push(nat 2, address "tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM");
+	let address test2 = storage.bmaptest.get(nat 1);
+	if (storage.bmaptest.in(nat 1)){
+		storage.bmaptest.drop(nat 2);
+	}
+}
+entry TestOptional(){
+	let ?nat test1 = to_optional(nat 1);
+	let bool test2 = isset(test1);
+	let nat = to_some(test1);
+}
+entry TestBytes(){
+	let bytes test1 = bytes 0x0500;
+	test1 = concat(test1, bytes 0x050001);
+	let bytes test2 = hash(bytes 0x050001);
+	let bytes test3 = hash(bytes 0x050001, blake2b);
+	let bytes test4 = hash(bytes 0x050001, sha256);
+	let bytes test5 = hash(bytes 0x050001, sha512);
+	let bytes test6 = pack(nat 1);
+	let nat test7 = unpack(test3, nat);
+	let nat test8 = test6.length();
+	let bytes test9 = slice(test2, nat 0, nat 4);
+}
