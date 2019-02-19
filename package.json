@@ -7,7 +7,7 @@
     "build": "webpack",
     "test": "jest"
   },
-  "author": "",
+  "author": "TezTech Labs",
   "license": "MIT",
   "devDependencies": {
     "jest": "^24.1.0",
