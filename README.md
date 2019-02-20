@@ -62,7 +62,7 @@ This returns the current version number of the fi-compiler.
 
 ```console.log(fi.version);```
 
-### fi.compile(code)
+### fi.compile(code, config)
 
 This takes one input argument, a string containing fi compile. This returns an object with two elements, code and abi.
 
@@ -78,6 +78,12 @@ console.log(compiled.ml); //Michelson code
 console.log(compiled.abi); //ABI JSON string
 ```
 
+You can also parse a config object, which is optional. The default settings are:
+
+- ml_format - defaults to "optimized" for minimal michelson, can set as "readable" for a human readable version, or "array" for a JS array
+- abi_format - defaults to "optimized" for the bare minimum, can be set as "full" for a full ABI copy including an array representation of the fi code
+- macros - WIP
+
 ### fi.abi.load(abi)
 
 You can manually loan an ABI string, which can be used to build input parameters for contract calls. In future, we aim to add additional support for more helper functions.
@@ -86,7 +92,7 @@ You can manually loan an ABI string, which can be used to build input parameters
 fi.abi.load(compiled.abi);
 ```
 
-### fi.abi.call(entry, input)
+### fi.abi.entry(entry, input)
 
 This function allows you to convert a JSON input object into packed bytes for calling a contract using a loaded ABI file. This function takes two input arguments, the name of the function you are calling, and the JSON object with the input.
 
@@ -94,6 +100,6 @@ This function allows you to convert a JSON input object into packed bytes for ca
 var input = {
   name : "Stephen"
 };
-console.log(fbi.abi.call("changeName", input)); // Returns packed bytes for a contract call
+console.log(fbi.abi.entry("changeName", input)); // Returns packed bytes for a contract call
 ```
 ```
