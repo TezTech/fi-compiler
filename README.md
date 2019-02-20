@@ -36,9 +36,25 @@ This will expose a global function, fi:
 console.log(fi);
 ```
 
+### CLI
+
+You can also install our npm CLI plugin, which allows you to compile fi directly from the command line:
+
+```npm i -g fi-cli```
+
+You can then compile code directly from your terminal using:
+
+```bash
+fi compile test_contract.fi
+```
+This will output two files in the same directory as the target fi file:
+xx.fi.abi => The contract ABI
+xx.fi.ml => The compuled michelson code
+
+
 ## Usage
 
-You can use the followed exposed functions:
+You can use the following exposed functions when using the web or node.js library:
 
 ### fi.version
 
