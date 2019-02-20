@@ -1,0 +1,5 @@
+storage nat test;
+
+entry TestInput(nat test1){
+	storage.test = input.test1;
+}

@@ -1,0 +1,10 @@
+entry TestMap(){
+	let map[nat=>address] test1 = new map(nat, address);
+	test1.push(nat 1, SENDER);
+	test1.push(nat 2, address "tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM");
+	let address test2 = test1.get(nat 1);
+	if (test1.in(nat 1)){
+		test1.drop(nat 2);
+	}
+	let nat test3 = test1.length();
+}

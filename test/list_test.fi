@@ -1,0 +1,6 @@
+entry TestList(){
+	let address[] test1 = new list(address);
+	test1.push(SENDER);
+	let address test2 = test1.pop();
+	let nat test3 = test1.length();
+}

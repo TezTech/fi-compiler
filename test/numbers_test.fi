@@ -1,0 +1,13 @@
+entry TestNumbers(){
+	let nat test1 = nat 100;
+	let nat test2 = add(test1, nat 2, nat 3);
+	let nat test3 = to_nat(sub(add(to_int(mutez 0), int 2), int 3, nat 5));
+	let int test4 = to_int(mutez 0);
+	let mutez test5 = to_mutez(sub(add(to_int(mutez 0), int 2), int 3, nat 5));
+	let nat test6 = abs(to_int(test2));
+	let nat test7 = sqr(test6);
+	let nat test8 = abs(to_int(test2));
+	let nat test9 = abs(to_int(test2));
+	let nat test10 = mod(nat 10, nat 3);
+	let nat test11 = div(nat 10, nat 3);
+}

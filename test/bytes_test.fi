@@ -1,0 +1,12 @@
+entry TestBytes(){
+	let bytes test1 = bytes 0x0500;
+	test1 = concat(test1, bytes 0x050001);
+	let bytes test2 = hash(bytes 0x050001);
+	let bytes test3 = hash(bytes 0x050001, blake2b);
+	let bytes test4 = hash(bytes 0x050001, sha256);
+	let bytes test5 = hash(bytes 0x050001, sha512);
+	let bytes test6 = pack(nat 1);
+	let nat test7 = unpack(test3, nat);
+	let nat test8 = test6.length();
+	let bytes test9 = slice(test2, nat 0, nat 4);
+}

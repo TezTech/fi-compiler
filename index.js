@@ -1,5 +1,6 @@
 var core = {
 	map : {},
+	abi : {},
 	literalTypes : ['string','bool','int','nat', 'bytes', 'mutez','timestamp','address','key','key_hash','signature','operation', 'unit','pkh'],
 	complexTypes : ['set','map','big_map','contract','list','option']
 };
@@ -13,7 +14,15 @@ core.abi = require("./lib/abi")(core);
 
 
 module.exports = {
-	compile: core.compile.script,
+	compile: function(ml, config){
+		if (typeof config == 'undefined') config = {};
+		var _config = {
+			abi_format : (typeof config.abi_format != 'undefined' ? config.abi_format : 'compact'), //compact/full
+			ml_format : (typeof config.ml_format != 'undefined' ? config.ml_format : 'compact'), //compact, full, array
+			macros : (typeof config.macros != 'undefined' ? config.macros : true),
+		}		
+		return core.compile.script(ml, _config)
+	},
 	abi : core.abi,
 	version: "0.0.1b",
 	_core : core,

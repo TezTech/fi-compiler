@@ -1,0 +1,13 @@
+entry TestPkh(){
+	let pkh test1 = pkh "tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM";
+	let address test2 = to_address(pkh "tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM");
+	let contract[unit] test3 = to_contract(test1);
+
+	transfer(test1, mutez 0);
+	transfer(test2, mutez 0);
+	transfer(test3, mutez 0);
+	
+	delegate();
+	delegate(test1);
+	delegate(pkh "tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM");
+}
