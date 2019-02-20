@@ -1,6 +1,0 @@
-entry TestTimestamp(){
-	let timestamp test1 = NOW;
-	let timestamp test2 = add(test1, int 100);
-	let int test3 = sub(test2, test1);
-	let timestamp test4 = add(int 200, NOW, sub(NOW, test1));
-}
