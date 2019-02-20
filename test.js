@@ -2,7 +2,7 @@ var ficompiler = require("./index.js"),
 fs = require('fs'),
 path = require('path');
 
-var tests = ['bigmap','bool','bytes','input','key_hash','key','list','map','mutez','numbers','optional','set','signature','storage','string','timestamp'];
+var tests = ['bigmap','bool','bytes','input','key_hash','key','list','map','mutez','numbers','optional','set','signature','storage','string','timestamp', 'blank'];
 
 for (var i = 0; i < tests.length; i++){
 	var t = tests[i];
