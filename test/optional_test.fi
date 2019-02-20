@@ -1,0 +1,5 @@
+entry TestOptional(){
+	let ?nat test1 = to_optional(nat 1);
+	let bool test2 = isset(test1);
+	let nat = to_some(test1);
+}

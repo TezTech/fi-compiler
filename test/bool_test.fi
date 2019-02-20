@@ -1,0 +1,7 @@
+entry TestBool(){
+	let bool test1 = bool True;
+	if (test1 == bool False){
+		assert(bool True);
+		assert(test1);
+	}
+}

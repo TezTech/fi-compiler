@@ -1,0 +1,4 @@
+entry TestMutez(){
+	let mutez test1 = AMOUNT;
+	let mutez test2 = add(test1, AMOUNT, BALANCE);
+}

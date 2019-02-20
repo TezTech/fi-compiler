@@ -1,0 +1,15 @@
+entry TestKey(){
+	let key test1 = key "edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym";
+	let pkh test2 = to_pkh(key "edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym");
+	let address test3 = to_address(key "edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym");
+	let contract[unit] test4 = to_contract(test1);
+	let address test5 = to_address(test4);
+
+	transfer(test1, mutez 0);
+	transfer(test2, mutez 0);
+	transfer(test3, mutez 0);
+	transfer(test4, mutez 0);
+	transfer(test5, mutez 0);
+	
+	let bool test6 = verify(bytes 0x0500, signature "edsigtgjPezMVW9zCu8ny4uMaAsT3gqbRANSNAzVBvZoFXx3ZiPifbLUUthdj4tewcCvJf3HpPfMTnML73hCi6UnFvZpvWsqTBk", test1);
+}

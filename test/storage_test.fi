@@ -1,0 +1,9 @@
+storage nat test1;
+storage string test2;
+storage bytes test3;
+
+entry TestStorage(){
+	storage.test1 = nat 1;
+	storage.test2 = concat(string "test", string "test");
+	storage.test3 = pack(storage.test2);
+}

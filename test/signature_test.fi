@@ -1,0 +1,3 @@
+entry TestSignature(){
+	let bool test1 = verify(bytes 0x0500, signature "edsigtgjPezMVW9zCu8ny4uMaAsT3gqbRANSNAzVBvZoFXx3ZiPifbLUUthdj4tewcCvJf3HpPfMTnML73hCi6UnFvZpvWsqTBk", key "edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym");
+}

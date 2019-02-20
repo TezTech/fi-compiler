@@ -1,0 +1,11 @@
+entry TestSet(){
+	let set[nat] test1 = new set(nat);
+	test1.push(nat 100);
+	test1.push(nat 200);
+	test1.push(nat 300);
+	let nat test2 = nat 100;
+	if (test1.in(test2)){
+		test1.drop(test2);
+	}
+	let nat test3 = test1.length();
+}

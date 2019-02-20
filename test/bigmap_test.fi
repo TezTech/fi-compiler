@@ -1,0 +1,9 @@
+storage bmap[nat=>address] bmaptest;
+entry TestBigmap(){
+	storage.bmaptest.push(nat 1, SENDER);
+	storage.bmaptest.push(nat 2, address "tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM");
+	let address test2 = storage.bmaptest.get(nat 1);
+	if (storage.bmaptest.in(nat 1)){
+		storage.bmaptest.drop(nat 2);
+	}
+}
