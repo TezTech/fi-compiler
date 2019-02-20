@@ -3,3 +3,4 @@ coverage/
 tests/
 index.html
 test.html
+test/*.fi.*
