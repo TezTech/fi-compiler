@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing bigmap 1`] = `
+Object {
+  "abi": "{\\"storage\\":[{\\"name\\":\\"bmaptest\\",\\"type\\":[\\"big_map\\",[\\"nat\\"],[\\"address\\"]]}],\\"entry\\":[{\\"name\\":\\"TestBigmap\\",\\"id\\":\\"0x7185ce72\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test2\\",\\"type\\":[\\"address\\"]}],\\"code\\":[[\\"ext\\",\\"push\\",\\"storage.bmaptest\\",[\\"nat\\",\\"1\\"],[\\"SENDER\\"]],[\\"ext\\",\\"push\\",\\"storage.bmaptest\\",[\\"nat\\",\\"2\\"],[\\"address\\",\\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\"]],[\\"set\\",\\"test2\\",[\\"ext\\",\\"get\\",\\"storage.bmaptest\\",[\\"nat\\",\\"1\\"]]],[\\"if\\",[\\"eq\\",[\\"ext\\",\\"in\\",\\"storage.bmaptest\\",[\\"nat\\",\\"1\\"]]],[\\"ext\\",\\"drop\\",\\"storage.bmaptest\\",[\\"nat\\",\\"2\\"]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage (big_map nat address);code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x7185ce72;COMPARE;EQ;IF{DROP;DROP;NONE address;PAIR;PUSH nat 1;DIP{SENDER;SOME;};DIIP{DUP;CDDR;};UPDATE;SWAP;SET_CDDR;PUSH nat 2;DIP{PUSH address \\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\";SOME;};DIIP{DUP;CDDR;};UPDATE;SWAP;SET_CDDR;PUSH nat 1;DIP{DUP;CDDR;};GET;IF_NONE{PUSH string \\"Key not found in map\\";FAILWITH}{};SWAP;SET_CAR;PUSH nat 1;DIP{DUP;CDDR;};MEM;DIP{PUSH bool True;};COMPARE;EQ;IF{PUSH nat 2;DIP{NONE address;};DIIP{DUP;CDDR;};UPDATE;SWAP;SET_CDDR;}{};CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing blank 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestBlank\\",\\"id\\":\\"0xff053d71\\",\\"input\\":[],\\"temp\\":[],\\"code\\":[]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0xff053d71;COMPARE;EQ;IF{DROP;DROP;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing bool 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestBool\\",\\"id\\":\\"0x03869439\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"bool\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"bool\\",\\"True\\"]],[\\"if\\",[\\"eq\\",[\\"test1\\"],[\\"bool\\",\\"False\\"]],[[\\"assert\\",[\\"eq\\",[\\"bool\\",\\"True\\"]]],[\\"assert\\",[\\"eq\\",[\\"test1\\"]]]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x03869439;COMPARE;EQ;IF{DROP;DROP;NONE bool;PAIR;PUSH bool True;SWAP;SET_CAR;DUP;CAR;DIP{PUSH bool False;};COMPARE;EQ;IF{PUSH bool True;DIP{PUSH bool True;};COMPARE;EQ;IF{}{PUSH string \\"Failed assert\\";FAILWITH};DUP;CAR;DIP{PUSH bool True;};COMPARE;EQ;IF{}{PUSH string \\"Failed assert\\";FAILWITH};}{};CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing bytes 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestBytes\\",\\"id\\":\\"0xa204dd7c\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test4\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test5\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test6\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test7\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test8\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test9\\",\\"type\\":[\\"bytes\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"bytes\\",\\"0x0500\\"]],[\\"set\\",\\"test1\\",[\\"concat\\",[\\"test1\\"],[\\"bytes\\",\\"0x050001\\"]]],[\\"set\\",\\"test2\\",[\\"hash\\",[\\"bytes\\",\\"0x050001\\"]]],[\\"set\\",\\"test3\\",[\\"hash\\",[\\"bytes\\",\\"0x050001\\"],[\\"blake2b\\"]]],[\\"set\\",\\"test4\\",[\\"hash\\",[\\"bytes\\",\\"0x050001\\"],[\\"sha256\\"]]],[\\"set\\",\\"test5\\",[\\"hash\\",[\\"bytes\\",\\"0x050001\\"],[\\"sha512\\"]]],[\\"set\\",\\"test6\\",[\\"pack\\",[\\"nat\\",\\"1\\"]]],[\\"set\\",\\"test7\\",[\\"unpack\\",[\\"test3\\"],[\\"nat\\"]]],[\\"set\\",\\"test8\\",[\\"ext\\",\\"length\\",\\"test6\\"]],[\\"set\\",\\"test9\\",[\\"slice\\",[\\"test2\\"],[\\"nat\\",\\"0\\"],[\\"nat\\",\\"4\\"]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0xa204dd7c;COMPARE;EQ;IF{DROP;DROP;NONE bytes;NONE nat;PAIR;NONE nat;PAIR;NONE bytes;PAIR;NONE bytes;PAIR;NONE bytes;PAIR;NONE bytes;PAIR;NONE bytes;PAIR;NONE bytes;PAIR;PAIR;PUSH bytes 0x0500;SWAP;SET_CAAR;DUP;CAAR;DIP{PUSH bytes 0x050001;};CONCAT;SWAP;SET_CAAR;PUSH bytes 0x050001;BLAKE2B;SWAP;SET_CADAR;PUSH bytes 0x050001;BLAKE2B;SWAP;SET_CADDAR;PUSH bytes 0x050001;SHA256;SWAP;SET_CADDDAR;PUSH bytes 0x050001;SHA512;SWAP;SET_CADDDDAR;PUSH nat 1;PACK;SWAP;SET_CADDDDDAR;DUP;CADDAR;UNPACK nat;IF_NONE{PUSH string \\"Unable to unpack\\";FAILWITH}{};SWAP;SET_CADDDDDDAR;DUP;CADDDDDAR;SIZE;SWAP;SET_CADDDDDDDAR;PUSH nat 0;DIP{PUSH nat 4;};DIIP{DUP;CADAR;};SLICE;IF_NONE{PUSH string \\"Unable to slice\\";FAILWITH}{};SWAP;SET_CADDDDDDDDR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing input 1`] = `
+Object {
+  "abi": "{\\"storage\\":[{\\"name\\":\\"test\\",\\"type\\":[\\"nat\\"]}],\\"entry\\":[{\\"name\\":\\"TestInput\\",\\"id\\":\\"0x9e642eca\\",\\"input\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"nat\\"]}],\\"temp\\":[],\\"code\\":[[\\"set\\",\\"storage.test\\",[\\"input.test1\\"]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage nat;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x9e642eca;COMPARE;EQ;IF{DROP;DUP;SIZE;PUSH nat 4;SWAP;SUB;DUP;GT;IF{}{PUSH nat 102;FAILWITH};ABS;PUSH nat 4;SLICE;IF_NONE{PUSH nat 101;FAILWITH}{};UNPACK nat;IF_NONE{PUSH nat 103;FAILWITH}{};PAIR;DUP;CAR;SWAP;SET_CDDR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing key 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestKey\\",\\"id\\":\\"0x1be907f4\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"key\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"key_hash\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"test4\\",\\"type\\":[\\"contract\\",[\\"unit\\"]]},{\\"name\\":\\"test5\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"test6\\",\\"type\\":[\\"bool\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"key\\",\\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\"]],[\\"set\\",\\"test2\\",[\\"to_pkh\\",[\\"key\\",\\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\"]]],[\\"set\\",\\"test3\\",[\\"to_address\\",[\\"key\\",\\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\"]]],[\\"set\\",\\"test4\\",[\\"to_contract\\",[\\"test1\\"]]],[\\"set\\",\\"test5\\",[\\"to_address\\",[\\"test4\\"]]],[\\"transfer\\",[\\"test1\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test2\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test3\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test4\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test5\\"],[\\"mutez\\",\\"0\\"]],[\\"set\\",\\"test6\\",[\\"verify\\",[\\"bytes\\",\\"0x0500\\"],[\\"signature\\",\\"edsigtgjPezMVW9zCu8ny4uMaAsT3gqbRANSNAzVBvZoFXx3ZiPifbLUUthdj4tewcCvJf3HpPfMTnML73hCi6UnFvZpvWsqTBk\\"],[\\"test1\\"]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x1be907f4;COMPARE;EQ;IF{DROP;DROP;NONE bool;NONE address;PAIR;NONE (contract unit);PAIR;NONE address;PAIR;NONE key_hash;PAIR;NONE key;PAIR;PAIR;PUSH key \\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\";SWAP;SET_CAAR;PUSH key \\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\";HASH_KEY;SWAP;SET_CADAR;PUSH key \\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\";HASH_KEY;IMPLICIT_ACCOUNT;ADDRESS;SWAP;SET_CADDAR;DUP;CAAR;HASH_KEY;IMPLICIT_ACCOUNT;SWAP;SET_CADDDAR;DUP;CADDDAR;ADDRESS;SWAP;SET_CADDDDAR;UNIT;DIP{PUSH mutez 0;};DIIP{DUP;CAAR;HASH_KEY;IMPLICIT_ACCOUNT;};TRANSFER_TOKENS;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;UNIT;DIP{PUSH mutez 0;};DIIP{DUP;CADAR;IMPLICIT_ACCOUNT;};TRANSFER_TOKENS;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;UNIT;DIP{PUSH mutez 0;};DIIP{DUP;CADDAR;CONTRACT unit;IF_NONE{PUSH string \\"Invalid contract\\";FAILWITH}{};};TRANSFER_TOKENS;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;UNIT;DIP{PUSH mutez 0;};DIIP{DUP;CADDDAR;};TRANSFER_TOKENS;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;UNIT;DIP{PUSH mutez 0;};DIIP{DUP;CADDDDAR;CONTRACT unit;IF_NONE{PUSH string \\"Invalid contract\\";FAILWITH}{};};TRANSFER_TOKENS;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;DUP;CAAR;DIP{PUSH signature \\"edsigtgjPezMVW9zCu8ny4uMaAsT3gqbRANSNAzVBvZoFXx3ZiPifbLUUthdj4tewcCvJf3HpPfMTnML73hCi6UnFvZpvWsqTBk\\";};DIIP{PUSH bytes 0x0500;};CHECK_SIGNATURE;SWAP;SET_CADDDDDR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing key_hash 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestPkh\\",\\"id\\":\\"0xa8ecbe7f\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"key_hash\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"contract\\",[\\"unit\\"]]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"pkh\\",\\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\"]],[\\"set\\",\\"test2\\",[\\"to_address\\",[\\"pkh\\",\\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\"]]],[\\"set\\",\\"test3\\",[\\"to_contract\\",[\\"test1\\"]]],[\\"transfer\\",[\\"test1\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test2\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test3\\"],[\\"mutez\\",\\"0\\"]],[\\"delegate\\"],[\\"delegate\\",[\\"test1\\"]],[\\"delegate\\",[\\"pkh\\",\\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\"]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0xa8ecbe7f;COMPARE;EQ;IF{DROP;DROP;NONE (contract unit);NONE address;PAIR;NONE key_hash;PAIR;PAIR;PUSH key_hash \\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\";SWAP;SET_CAAR;PUSH key_hash \\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\";IMPLICIT_ACCOUNT;ADDRESS;SWAP;SET_CADAR;DUP;CAAR;IMPLICIT_ACCOUNT;SWAP;SET_CADDR;UNIT;DIP{PUSH mutez 0;};DIIP{DUP;CAAR;IMPLICIT_ACCOUNT;};TRANSFER_TOKENS;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;UNIT;DIP{PUSH mutez 0;};DIIP{DUP;CADAR;CONTRACT unit;IF_NONE{PUSH string \\"Invalid contract\\";FAILWITH}{};};TRANSFER_TOKENS;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;UNIT;DIP{PUSH mutez 0;};DIIP{DUP;CADDR;};TRANSFER_TOKENS;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;NONE key_hash;SET_DELEGATE;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;DUP;CAAR;SOME;SET_DELEGATE;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;PUSH key_hash \\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\";SOME;SET_DELEGATE;DIP{DUP;CDAR;};CONS;SWAP;SET_CDAR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing list 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestList\\",\\"id\\":\\"0x27e5d125\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"list\\",[\\"address\\"]]},{\\"name\\":\\"test2\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"nat\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"new\\",\\"list\\",[\\"address\\"]]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"SENDER\\"]],[\\"set\\",\\"test2\\",[\\"ext\\",\\"pop\\",\\"test1\\"]],[\\"set\\",\\"test3\\",[\\"ext\\",\\"length\\",\\"test1\\"]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x27e5d125;COMPARE;EQ;IF{DROP;DROP;NONE nat;NONE address;PAIR;NONE (list address);PAIR;PAIR;NIL address;SWAP;SET_CAAR;SENDER;DIP{DUP;CAAR;};CONS;SWAP;SET_CAAR;DUP;CAAR;IF_CONS{}{PUSH string \\"Fail pop\\";FAILWITH};DIP{SWAP;SET_CAAR;};SWAP;SET_CADAR;DUP;CAAR;SIZE;SWAP;SET_CADDR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing map 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestMap\\",\\"id\\":\\"0x679e0fcd\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"map\\",[\\"nat\\"],[\\"address\\"]]},{\\"name\\":\\"test2\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"nat\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"new\\",\\"map\\",[\\"nat\\"],[\\"address\\"]]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"nat\\",\\"1\\"],[\\"SENDER\\"]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"nat\\",\\"2\\"],[\\"address\\",\\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\"]],[\\"set\\",\\"test2\\",[\\"ext\\",\\"get\\",\\"test1\\",[\\"nat\\",\\"1\\"]]],[\\"if\\",[\\"eq\\",[\\"ext\\",\\"in\\",\\"test1\\",[\\"nat\\",\\"1\\"]]],[\\"ext\\",\\"drop\\",\\"test1\\",[\\"nat\\",\\"2\\"]]],[\\"set\\",\\"test3\\",[\\"ext\\",\\"length\\",\\"test1\\"]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x679e0fcd;COMPARE;EQ;IF{DROP;DROP;NONE nat;NONE address;PAIR;NONE (map nat address);PAIR;PAIR;EMPTY_MAP nat address;SWAP;SET_CAAR;PUSH nat 1;DIP{SENDER;SOME;};DIIP{DUP;CAAR;};UPDATE;SWAP;SET_CAAR;PUSH nat 2;DIP{PUSH address \\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\";SOME;};DIIP{DUP;CAAR;};UPDATE;SWAP;SET_CAAR;PUSH nat 1;DIP{DUP;CAAR;};GET;IF_NONE{PUSH string \\"Key not found in map\\";FAILWITH}{};SWAP;SET_CADAR;PUSH nat 1;DIP{DUP;CAAR;};MEM;DIP{PUSH bool True;};COMPARE;EQ;IF{PUSH nat 2;DIP{NONE address;};DIIP{DUP;CAAR;};UPDATE;SWAP;SET_CAAR;}{};DUP;CAAR;SIZE;SWAP;SET_CADDR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing mutez 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestMutez\\",\\"id\\":\\"0xef250cb4\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"mutez\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"mutez\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"AMOUNT\\"]],[\\"set\\",\\"test2\\",[\\"add\\",[\\"test1\\"],[\\"AMOUNT\\"],[\\"BALANCE\\"]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0xef250cb4;COMPARE;EQ;IF{DROP;DROP;NONE mutez;NONE mutez;PAIR;PAIR;AMOUNT;SWAP;SET_CAAR;DUP;CAAR;DIP{AMOUNT;};ADD;DIP{BALANCE;};ADD;SWAP;SET_CADR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing numbers 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestNumbers\\",\\"id\\":\\"0x53bb191c\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test4\\",\\"type\\":[\\"int\\"]},{\\"name\\":\\"test5\\",\\"type\\":[\\"mutez\\"]},{\\"name\\":\\"test6\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test7\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test8\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test9\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test10\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test11\\",\\"type\\":[\\"nat\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"nat\\",\\"100\\"]],[\\"set\\",\\"test2\\",[\\"add\\",[\\"test1\\"],[\\"nat\\",\\"2\\"],[\\"nat\\",\\"3\\"]]],[\\"set\\",\\"test3\\",[\\"to_nat\\",[\\"sub\\",[\\"add\\",[\\"to_int\\",[\\"mutez\\",\\"0\\"]],[\\"int\\",\\"2\\"]],[\\"int\\",\\"3\\"],[\\"nat\\",\\"5\\"]]]],[\\"set\\",\\"test4\\",[\\"to_int\\",[\\"mutez\\",\\"0\\"]]],[\\"set\\",\\"test5\\",[\\"to_mutez\\",[\\"sub\\",[\\"add\\",[\\"to_int\\",[\\"mutez\\",\\"0\\"]],[\\"int\\",\\"2\\"]],[\\"int\\",\\"3\\"],[\\"nat\\",\\"5\\"]]]],[\\"set\\",\\"test6\\",[\\"abs\\",[\\"to_int\\",[\\"test2\\"]]]],[\\"set\\",\\"test7\\",[\\"sqr\\",[\\"test6\\"]]],[\\"set\\",\\"test8\\",[\\"abs\\",[\\"to_int\\",[\\"test2\\"]]]],[\\"set\\",\\"test9\\",[\\"abs\\",[\\"to_int\\",[\\"test2\\"]]]],[\\"set\\",\\"test10\\",[\\"mod\\",[\\"nat\\",\\"10\\"],[\\"nat\\",\\"3\\"]]],[\\"set\\",\\"test11\\",[\\"div\\",[\\"nat\\",\\"10\\"],[\\"nat\\",\\"3\\"]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x53bb191c;COMPARE;EQ;IF{DROP;DROP;NONE nat;NONE nat;PAIR;NONE nat;PAIR;NONE nat;PAIR;NONE nat;PAIR;NONE nat;PAIR;NONE mutez;PAIR;NONE int;PAIR;NONE nat;PAIR;NONE nat;PAIR;NONE nat;PAIR;PAIR;PUSH nat 100;SWAP;SET_CAAR;DUP;CAAR;DIP{PUSH nat 2;};ADD;DIP{PUSH nat 3;};ADD;SWAP;SET_CADAR;PUSH mutez 0;DIP{PUSH mutez 1;};EDIV;IF_NONE{PUSH string \\"Error with casting\\";FAILWITH}{};CAR;PUSH int 1;MUL;DIP{PUSH int 2;};ADD;DIP{PUSH int 3;};SUB;DIP{PUSH nat 5;};SUB;DUP;GT;IF{}{PUSH string \\"Nat conversion not possible\\";FAILWITH};ABS;SWAP;SET_CADDAR;PUSH mutez 0;DIP{PUSH mutez 1;};EDIV;IF_NONE{PUSH string \\"Error with casting\\";FAILWITH}{};CAR;PUSH int 1;MUL;SWAP;SET_CADDDAR;PUSH mutez 0;DIP{PUSH mutez 1;};EDIV;IF_NONE{PUSH string \\"Error with casting\\";FAILWITH}{};CAR;PUSH int 1;MUL;DIP{PUSH int 2;};ADD;DIP{PUSH int 3;};SUB;DIP{PUSH nat 5;};SUB;DUP;GT;IF{}{PUSH string \\"Mutez conversion not possible\\";FAILWITH};ABS;DIP{PUSH mutez 1;};MUL;SWAP;SET_CADDDDAR;DUP;CADAR;PUSH int 1;MUL;ABS;SWAP;SET_CADDDDDAR;DUP;CADDDDDAR;DUP;MUL;SWAP;SET_CADDDDDDAR;DUP;CADAR;PUSH int 1;MUL;ABS;SWAP;SET_CADDDDDDDAR;DUP;CADAR;PUSH int 1;MUL;ABS;SWAP;SET_CADDDDDDDDAR;PUSH nat 10;DIP{PUSH nat 3;};EDIV;IF_NONE{PUSH string \\"Divisible by 0\\";FAILWITH}{};CDR;SWAP;SET_CADDDDDDDDDAR;PUSH nat 10;DIP{PUSH nat 3;};EDIV;IF_NONE{PUSH string \\"Divisible by 0\\";FAILWITH}{};CAR;SWAP;SET_CADDDDDDDDDDR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing optional 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestOptional\\",\\"id\\":\\"0x69847f58\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"option\\",[\\"nat\\"]]},{\\"name\\":\\"test2\\",\\"type\\":[\\"bool\\"]},{\\"name\\":[\\"to_some\\",[\\"test1\\"]],\\"type\\":[\\"nat\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"to_optional\\",[\\"nat\\",\\"1\\"]]],[\\"set\\",\\"test2\\",[\\"isset\\",[\\"test1\\"]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x69847f58;COMPARE;EQ;IF{DROP;DROP;NONE nat;NONE bool;PAIR;NONE (option nat);PAIR;PAIR;PUSH nat 1;SOME;SWAP;SET_CAAR;DUP;CAAR;IF_NONE{DROP;PUSH bool False}{PUSH bool True};SWAP;SET_CADAR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing set 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestSet\\",\\"id\\":\\"0x36203e28\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"set\\",[\\"nat\\"]]},{\\"name\\":\\"test2\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"nat\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"new\\",\\"set\\",[\\"nat\\"]]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"nat\\",\\"100\\"]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"nat\\",\\"200\\"]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"nat\\",\\"300\\"]],[\\"set\\",\\"test2\\",[\\"nat\\",\\"100\\"]],[\\"if\\",[\\"eq\\",[\\"ext\\",\\"in\\",\\"test1\\",[\\"test2\\"]]],[\\"ext\\",\\"drop\\",\\"test1\\",[\\"test2\\"]]],[\\"set\\",\\"test3\\",[\\"ext\\",\\"length\\",\\"test1\\"]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x36203e28;COMPARE;EQ;IF{DROP;DROP;NONE nat;NONE nat;PAIR;NONE (set nat);PAIR;PAIR;EMPTY_SET nat;SWAP;SET_CAAR;PUSH nat 100;DIP{PUSH bool True;};DIIP{DUP;CAAR;};UPDATE;SWAP;SET_CAAR;PUSH nat 200;DIP{PUSH bool True;};DIIP{DUP;CAAR;};UPDATE;SWAP;SET_CAAR;PUSH nat 300;DIP{PUSH bool True;};DIIP{DUP;CAAR;};UPDATE;SWAP;SET_CAAR;PUSH nat 100;SWAP;SET_CADAR;DUP;CADAR;DIP{DUP;CAAR;};MEM;DIP{PUSH bool True;};COMPARE;EQ;IF{DUP;CADAR;DIP{PUSH bool False;};DIIP{DUP;CAAR;};UPDATE;SWAP;SET_CAAR;}{};DUP;CAAR;SIZE;SWAP;SET_CADDR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing signature 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestSignature\\",\\"id\\":\\"0xda7f7491\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"bool\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"verify\\",[\\"bytes\\",\\"0x0500\\"],[\\"signature\\",\\"edsigtgjPezMVW9zCu8ny4uMaAsT3gqbRANSNAzVBvZoFXx3ZiPifbLUUthdj4tewcCvJf3HpPfMTnML73hCi6UnFvZpvWsqTBk\\"],[\\"key\\",\\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\"]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0xda7f7491;COMPARE;EQ;IF{DROP;DROP;NONE bool;PAIR;PUSH key \\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\";DIP{PUSH signature \\"edsigtgjPezMVW9zCu8ny4uMaAsT3gqbRANSNAzVBvZoFXx3ZiPifbLUUthdj4tewcCvJf3HpPfMTnML73hCi6UnFvZpvWsqTBk\\";};DIIP{PUSH bytes 0x0500;};CHECK_SIGNATURE;SWAP;SET_CAR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing storage 1`] = `
+Object {
+  "abi": "{\\"storage\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"string\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"bytes\\"]}],\\"entry\\":[{\\"name\\":\\"TestStorage\\",\\"id\\":\\"0xed5088d9\\",\\"input\\":[],\\"temp\\":[],\\"code\\":[[\\"set\\",\\"storage.test1\\",[\\"nat\\",\\"1\\"]],[\\"set\\",\\"storage.test2\\",[\\"concat\\",[\\"string\\",\\"test\\"],[\\"string\\",\\"test\\"]]],[\\"set\\",\\"storage.test3\\",[\\"pack\\",[\\"storage.test2\\"]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage (pair nat (pair string bytes));code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0xed5088d9;COMPARE;EQ;IF{DROP;DROP;PUSH nat 1;SWAP;SET_CDAR;PUSH string \\"test\\";DIP{PUSH string \\"test\\";};CONCAT;SWAP;SET_CDDAR;DUP;CDDAR;PACK;SWAP;SET_CDDDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing string 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestString\\",\\"id\\":\\"0xf8eef9d9\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"string\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"string\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test4\\",\\"type\\":[\\"string\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"string\\",\\"Hello World\\"]],[\\"set\\",\\"test2\\",[\\"concat\\",[\\"string\\",\\"Hello World\\"],[\\"test1\\"]]],[\\"set\\",\\"test3\\",[\\"ext\\",\\"length\\",\\"test1\\"]],[\\"set\\",\\"test4\\",[\\"slice\\",[\\"test2\\"],[\\"nat\\",\\"0\\"],[\\"nat\\",\\"10\\"]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0xf8eef9d9;COMPARE;EQ;IF{DROP;DROP;NONE string;NONE nat;PAIR;NONE string;PAIR;NONE string;PAIR;PAIR;PUSH string \\"Hello World\\";SWAP;SET_CAAR;PUSH string \\"Hello World\\";DIP{DUP;CAAR;};CONCAT;SWAP;SET_CADAR;DUP;CAAR;SIZE;SWAP;SET_CADDAR;PUSH nat 0;DIP{PUSH nat 10;};DIIP{DUP;CADAR;};SLICE;IF_NONE{PUSH string \\"Unable to slice\\";FAILWITH}{};SWAP;SET_CADDDR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
+
+exports[`Testing timestamp 1`] = `
+Object {
+  "abi": "{\\"entry\\":[{\\"name\\":\\"TestTimestamp\\",\\"id\\":\\"0xb9e54d3e\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"timestamp\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"timestamp\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"int\\"]},{\\"name\\":\\"test4\\",\\"type\\":[\\"timestamp\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"NOW\\"]],[\\"set\\",\\"test2\\",[\\"add\\",[\\"test1\\"],[\\"int\\",\\"100\\"]]],[\\"set\\",\\"test3\\",[\\"sub\\",[\\"test2\\"],[\\"test1\\"]]],[\\"set\\",\\"test4\\",[\\"add\\",[\\"int\\",\\"200\\"],[\\"NOW\\"],[\\"sub\\",[\\"NOW\\"],[\\"test1\\"]]]]]}]}",
+  "config": Object {
+    "abi_format": "compact",
+    "macros": true,
+    "ml_format": "compact",
+  },
+  "ml": "parameter bytes;storage unit;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0xb9e54d3e;COMPARE;EQ;IF{DROP;DROP;NONE timestamp;NONE int;PAIR;NONE timestamp;PAIR;NONE timestamp;PAIR;PAIR;NOW;SWAP;SET_CAAR;DUP;CAAR;DIP{PUSH int 100;};ADD;SWAP;SET_CADAR;DUP;CADAR;DIP{DUP;CAAR;};SUB;SWAP;SET_CADDAR;PUSH int 200;DIP{NOW;};ADD;DIP{NOW;DIP{DUP;CAAR;};SUB;};ADD;SWAP;SET_CADDDR;CDR;}{DROP;PUSH nat 400;FAILWITH;}};",
+}
+`;
