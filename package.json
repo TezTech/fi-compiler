@@ -1,6 +1,6 @@
 {
   "name": "fi-compiler",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Core compiler library for fi, a high-level language for Michelson",
   "main": "index.js",
   "scripts": {
