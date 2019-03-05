@@ -3,7 +3,11 @@
 module.exports = {
 	env: {
 		browser: false
+		, 'jest/globals': true
 		, node: true
 	}
-	, extends: ['ayotte']
+	, extends: [
+		'ayotte'
+	]
+	, plugins: ['jest']
 }

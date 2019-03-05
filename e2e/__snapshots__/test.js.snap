@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing bigmap 1`] = `
+exports[`Compiler bigmap sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"storage\\":[{\\"name\\":\\"bmaptest\\",\\"type\\":[\\"big_map\\",[\\"nat\\"],[\\"address\\"]]}],\\"entry\\":[{\\"name\\":\\"TestBigmap\\",\\"id\\":\\"0x7185ce72\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test2\\",\\"type\\":[\\"address\\"]}],\\"code\\":[[\\"ext\\",\\"push\\",\\"storage.bmaptest\\",[\\"nat\\",\\"1\\"],[\\"SENDER\\"]],[\\"ext\\",\\"push\\",\\"storage.bmaptest\\",[\\"nat\\",\\"2\\"],[\\"address\\",\\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\"]],[\\"set\\",\\"test2\\",[\\"ext\\",\\"get\\",\\"storage.bmaptest\\",[\\"nat\\",\\"1\\"]]],[\\"if\\",[\\"eq\\",[\\"ext\\",\\"in\\",\\"storage.bmaptest\\",[\\"nat\\",\\"1\\"]]],[\\"ext\\",\\"drop\\",\\"storage.bmaptest\\",[\\"nat\\",\\"2\\"]]]]}]}",
   "config": Object {
@@ -12,7 +12,7 @@ Object {
 }
 `;
 
-exports[`Testing blank 1`] = `
+exports[`Compiler blank sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestBlank\\",\\"id\\":\\"0xff053d71\\",\\"input\\":[],\\"temp\\":[],\\"code\\":[]}]}",
   "config": Object {
@@ -24,7 +24,7 @@ Object {
 }
 `;
 
-exports[`Testing bool 1`] = `
+exports[`Compiler bool sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestBool\\",\\"id\\":\\"0x03869439\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"bool\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"bool\\",\\"True\\"]],[\\"if\\",[\\"eq\\",[\\"test1\\"],[\\"bool\\",\\"False\\"]],[[\\"assert\\",[\\"eq\\",[\\"bool\\",\\"True\\"]]],[\\"assert\\",[\\"eq\\",[\\"test1\\"]]]]]]}]}",
   "config": Object {
@@ -36,7 +36,7 @@ Object {
 }
 `;
 
-exports[`Testing bytes 1`] = `
+exports[`Compiler bytes sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestBytes\\",\\"id\\":\\"0xa204dd7c\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test4\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test5\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test6\\",\\"type\\":[\\"bytes\\"]},{\\"name\\":\\"test7\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test8\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test9\\",\\"type\\":[\\"bytes\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"bytes\\",\\"0x0500\\"]],[\\"set\\",\\"test1\\",[\\"concat\\",[\\"test1\\"],[\\"bytes\\",\\"0x050001\\"]]],[\\"set\\",\\"test2\\",[\\"hash\\",[\\"bytes\\",\\"0x050001\\"]]],[\\"set\\",\\"test3\\",[\\"hash\\",[\\"bytes\\",\\"0x050001\\"],[\\"blake2b\\"]]],[\\"set\\",\\"test4\\",[\\"hash\\",[\\"bytes\\",\\"0x050001\\"],[\\"sha256\\"]]],[\\"set\\",\\"test5\\",[\\"hash\\",[\\"bytes\\",\\"0x050001\\"],[\\"sha512\\"]]],[\\"set\\",\\"test6\\",[\\"pack\\",[\\"nat\\",\\"1\\"]]],[\\"set\\",\\"test7\\",[\\"unpack\\",[\\"test3\\"],[\\"nat\\"]]],[\\"set\\",\\"test8\\",[\\"ext\\",\\"length\\",\\"test6\\"]],[\\"set\\",\\"test9\\",[\\"slice\\",[\\"test2\\"],[\\"nat\\",\\"0\\"],[\\"nat\\",\\"4\\"]]]]}]}",
   "config": Object {
@@ -48,7 +48,7 @@ Object {
 }
 `;
 
-exports[`Testing input 1`] = `
+exports[`Compiler input sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"storage\\":[{\\"name\\":\\"test\\",\\"type\\":[\\"nat\\"]}],\\"entry\\":[{\\"name\\":\\"TestInput\\",\\"id\\":\\"0x9e642eca\\",\\"input\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"nat\\"]}],\\"temp\\":[],\\"code\\":[[\\"set\\",\\"storage.test\\",[\\"input.test1\\"]]]}]}",
   "config": Object {
@@ -60,7 +60,7 @@ Object {
 }
 `;
 
-exports[`Testing key 1`] = `
+exports[`Compiler key sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestKey\\",\\"id\\":\\"0x1be907f4\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"key\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"key_hash\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"test4\\",\\"type\\":[\\"contract\\",[\\"unit\\"]]},{\\"name\\":\\"test5\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"test6\\",\\"type\\":[\\"bool\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"key\\",\\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\"]],[\\"set\\",\\"test2\\",[\\"to_pkh\\",[\\"key\\",\\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\"]]],[\\"set\\",\\"test3\\",[\\"to_address\\",[\\"key\\",\\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\"]]],[\\"set\\",\\"test4\\",[\\"to_contract\\",[\\"test1\\"]]],[\\"set\\",\\"test5\\",[\\"to_address\\",[\\"test4\\"]]],[\\"transfer\\",[\\"test1\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test2\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test3\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test4\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test5\\"],[\\"mutez\\",\\"0\\"]],[\\"set\\",\\"test6\\",[\\"verify\\",[\\"bytes\\",\\"0x0500\\"],[\\"signature\\",\\"edsigtgjPezMVW9zCu8ny4uMaAsT3gqbRANSNAzVBvZoFXx3ZiPifbLUUthdj4tewcCvJf3HpPfMTnML73hCi6UnFvZpvWsqTBk\\"],[\\"test1\\"]]]]}]}",
   "config": Object {
@@ -72,7 +72,7 @@ Object {
 }
 `;
 
-exports[`Testing key_hash 1`] = `
+exports[`Compiler key_hash sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestPkh\\",\\"id\\":\\"0xa8ecbe7f\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"key_hash\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"contract\\",[\\"unit\\"]]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"pkh\\",\\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\"]],[\\"set\\",\\"test2\\",[\\"to_address\\",[\\"pkh\\",\\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\"]]],[\\"set\\",\\"test3\\",[\\"to_contract\\",[\\"test1\\"]]],[\\"transfer\\",[\\"test1\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test2\\"],[\\"mutez\\",\\"0\\"]],[\\"transfer\\",[\\"test3\\"],[\\"mutez\\",\\"0\\"]],[\\"delegate\\"],[\\"delegate\\",[\\"test1\\"]],[\\"delegate\\",[\\"pkh\\",\\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\"]]]}]}",
   "config": Object {
@@ -84,7 +84,7 @@ Object {
 }
 `;
 
-exports[`Testing list 1`] = `
+exports[`Compiler list sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestList\\",\\"id\\":\\"0x27e5d125\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"list\\",[\\"address\\"]]},{\\"name\\":\\"test2\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"nat\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"new\\",\\"list\\",[\\"address\\"]]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"SENDER\\"]],[\\"set\\",\\"test2\\",[\\"ext\\",\\"pop\\",\\"test1\\"]],[\\"set\\",\\"test3\\",[\\"ext\\",\\"length\\",\\"test1\\"]]]}]}",
   "config": Object {
@@ -96,7 +96,7 @@ Object {
 }
 `;
 
-exports[`Testing map 1`] = `
+exports[`Compiler map sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestMap\\",\\"id\\":\\"0x679e0fcd\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"map\\",[\\"nat\\"],[\\"address\\"]]},{\\"name\\":\\"test2\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"nat\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"new\\",\\"map\\",[\\"nat\\"],[\\"address\\"]]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"nat\\",\\"1\\"],[\\"SENDER\\"]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"nat\\",\\"2\\"],[\\"address\\",\\"tz1UqBubMBKtEVpN6jkNQwc3TAoBNdtmtiyM\\"]],[\\"set\\",\\"test2\\",[\\"ext\\",\\"get\\",\\"test1\\",[\\"nat\\",\\"1\\"]]],[\\"if\\",[\\"eq\\",[\\"ext\\",\\"in\\",\\"test1\\",[\\"nat\\",\\"1\\"]]],[\\"ext\\",\\"drop\\",\\"test1\\",[\\"nat\\",\\"2\\"]]],[\\"set\\",\\"test3\\",[\\"ext\\",\\"length\\",\\"test1\\"]]]}]}",
   "config": Object {
@@ -108,7 +108,7 @@ Object {
 }
 `;
 
-exports[`Testing mutez 1`] = `
+exports[`Compiler mutez sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestMutez\\",\\"id\\":\\"0xef250cb4\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"mutez\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"mutez\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"AMOUNT\\"]],[\\"set\\",\\"test2\\",[\\"add\\",[\\"test1\\"],[\\"AMOUNT\\"],[\\"BALANCE\\"]]]]}]}",
   "config": Object {
@@ -120,7 +120,7 @@ Object {
 }
 `;
 
-exports[`Testing numbers 1`] = `
+exports[`Compiler numbers sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestNumbers\\",\\"id\\":\\"0x53bb191c\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test4\\",\\"type\\":[\\"int\\"]},{\\"name\\":\\"test5\\",\\"type\\":[\\"mutez\\"]},{\\"name\\":\\"test6\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test7\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test8\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test9\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test10\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test11\\",\\"type\\":[\\"nat\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"nat\\",\\"100\\"]],[\\"set\\",\\"test2\\",[\\"add\\",[\\"test1\\"],[\\"nat\\",\\"2\\"],[\\"nat\\",\\"3\\"]]],[\\"set\\",\\"test3\\",[\\"to_nat\\",[\\"sub\\",[\\"add\\",[\\"to_int\\",[\\"mutez\\",\\"0\\"]],[\\"int\\",\\"2\\"]],[\\"int\\",\\"3\\"],[\\"nat\\",\\"5\\"]]]],[\\"set\\",\\"test4\\",[\\"to_int\\",[\\"mutez\\",\\"0\\"]]],[\\"set\\",\\"test5\\",[\\"to_mutez\\",[\\"sub\\",[\\"add\\",[\\"to_int\\",[\\"mutez\\",\\"0\\"]],[\\"int\\",\\"2\\"]],[\\"int\\",\\"3\\"],[\\"nat\\",\\"5\\"]]]],[\\"set\\",\\"test6\\",[\\"abs\\",[\\"to_int\\",[\\"test2\\"]]]],[\\"set\\",\\"test7\\",[\\"sqr\\",[\\"test6\\"]]],[\\"set\\",\\"test8\\",[\\"abs\\",[\\"to_int\\",[\\"test2\\"]]]],[\\"set\\",\\"test9\\",[\\"abs\\",[\\"to_int\\",[\\"test2\\"]]]],[\\"set\\",\\"test10\\",[\\"mod\\",[\\"nat\\",\\"10\\"],[\\"nat\\",\\"3\\"]]],[\\"set\\",\\"test11\\",[\\"div\\",[\\"nat\\",\\"10\\"],[\\"nat\\",\\"3\\"]]]]}]}",
   "config": Object {
@@ -132,7 +132,7 @@ Object {
 }
 `;
 
-exports[`Testing optional 1`] = `
+exports[`Compiler optional sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestOptional\\",\\"id\\":\\"0x69847f58\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"option\\",[\\"nat\\"]]},{\\"name\\":\\"test2\\",\\"type\\":[\\"bool\\"]},{\\"name\\":[\\"to_some\\",[\\"test1\\"]],\\"type\\":[\\"nat\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"to_optional\\",[\\"nat\\",\\"1\\"]]],[\\"set\\",\\"test2\\",[\\"isset\\",[\\"test1\\"]]]]}]}",
   "config": Object {
@@ -144,7 +144,7 @@ Object {
 }
 `;
 
-exports[`Testing set 1`] = `
+exports[`Compiler set sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestSet\\",\\"id\\":\\"0x36203e28\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"set\\",[\\"nat\\"]]},{\\"name\\":\\"test2\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"nat\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"new\\",\\"set\\",[\\"nat\\"]]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"nat\\",\\"100\\"]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"nat\\",\\"200\\"]],[\\"ext\\",\\"push\\",\\"test1\\",[\\"nat\\",\\"300\\"]],[\\"set\\",\\"test2\\",[\\"nat\\",\\"100\\"]],[\\"if\\",[\\"eq\\",[\\"ext\\",\\"in\\",\\"test1\\",[\\"test2\\"]]],[\\"ext\\",\\"drop\\",\\"test1\\",[\\"test2\\"]]],[\\"set\\",\\"test3\\",[\\"ext\\",\\"length\\",\\"test1\\"]]]}]}",
   "config": Object {
@@ -156,7 +156,7 @@ Object {
 }
 `;
 
-exports[`Testing signature 1`] = `
+exports[`Compiler signature sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestSignature\\",\\"id\\":\\"0xda7f7491\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"bool\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"verify\\",[\\"bytes\\",\\"0x0500\\"],[\\"signature\\",\\"edsigtgjPezMVW9zCu8ny4uMaAsT3gqbRANSNAzVBvZoFXx3ZiPifbLUUthdj4tewcCvJf3HpPfMTnML73hCi6UnFvZpvWsqTBk\\"],[\\"key\\",\\"edpkuk9Z83jy5DJtga82A1MdYNvjVfCi3GfV31dQDtcS3FE8bbhZym\\"]]]]}]}",
   "config": Object {
@@ -168,7 +168,7 @@ Object {
 }
 `;
 
-exports[`Testing storage 1`] = `
+exports[`Compiler storage sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"storage\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"string\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"bytes\\"]}],\\"entry\\":[{\\"name\\":\\"TestStorage\\",\\"id\\":\\"0xed5088d9\\",\\"input\\":[],\\"temp\\":[],\\"code\\":[[\\"set\\",\\"storage.test1\\",[\\"nat\\",\\"1\\"]],[\\"set\\",\\"storage.test2\\",[\\"concat\\",[\\"string\\",\\"test\\"],[\\"string\\",\\"test\\"]]],[\\"set\\",\\"storage.test3\\",[\\"pack\\",[\\"storage.test2\\"]]]]}]}",
   "config": Object {
@@ -180,7 +180,7 @@ Object {
 }
 `;
 
-exports[`Testing string 1`] = `
+exports[`Compiler string sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestString\\",\\"id\\":\\"0xf8eef9d9\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"string\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"string\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"test4\\",\\"type\\":[\\"string\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"string\\",\\"Hello World\\"]],[\\"set\\",\\"test2\\",[\\"concat\\",[\\"string\\",\\"Hello World\\"],[\\"test1\\"]]],[\\"set\\",\\"test3\\",[\\"ext\\",\\"length\\",\\"test1\\"]],[\\"set\\",\\"test4\\",[\\"slice\\",[\\"test2\\"],[\\"nat\\",\\"0\\"],[\\"nat\\",\\"10\\"]]]]}]}",
   "config": Object {
@@ -192,7 +192,7 @@ Object {
 }
 `;
 
-exports[`Testing timestamp 1`] = `
+exports[`Compiler timestamp sample compiles correctly 1`] = `
 Object {
   "abi": "{\\"entry\\":[{\\"name\\":\\"TestTimestamp\\",\\"id\\":\\"0xb9e54d3e\\",\\"input\\":[],\\"temp\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"timestamp\\"]},{\\"name\\":\\"test2\\",\\"type\\":[\\"timestamp\\"]},{\\"name\\":\\"test3\\",\\"type\\":[\\"int\\"]},{\\"name\\":\\"test4\\",\\"type\\":[\\"timestamp\\"]}],\\"code\\":[[\\"set\\",\\"test1\\",[\\"NOW\\"]],[\\"set\\",\\"test2\\",[\\"add\\",[\\"test1\\"],[\\"int\\",\\"100\\"]]],[\\"set\\",\\"test3\\",[\\"sub\\",[\\"test2\\"],[\\"test1\\"]]],[\\"set\\",\\"test4\\",[\\"add\\",[\\"int\\",\\"200\\"],[\\"NOW\\"],[\\"sub\\",[\\"NOW\\"],[\\"test1\\"]]]]]}]}",
   "config": Object {
