@@ -4,28 +4,28 @@ const core = {
 	map: {}
 	, abi: {}
 	, literalTypes: [
-		'string'
+		'address'
 		, 'bool'
-		, 'int'
-		, 'nat'
 		, 'bytes'
-		, 'mutez'
-		, 'timestamp'
-		, 'address'
+		, 'int'
 		, 'key'
 		, 'key_hash'
-		, 'signature'
+		, 'mutez'
+		, 'nat'
 		, 'operation'
-		, 'unit'
 		, 'pkh'
+		, 'signature'
+		, 'string'
+		, 'timestamp'
+		, 'unit'
 	]
 	, complexTypes: [
-		'set'
-		, 'map'
-		, 'big_map'
+		'big_map'
 		, 'contract'
 		, 'list'
+		, 'map'
 		, 'option'
+		, 'set'
 	]
 }
 
@@ -36,16 +36,30 @@ core.compile = require('./lib/compile')(core)
 core.abi = require('./lib/abi')(core)
 
 module.exports = {
-	compile(ml, config) {
-		if (typeof config == 'undefined') {
-			config = {}
+	compile(ml, config = {}) {
+		const {
+			abi_format = 'compact'
+			, ml_format = 'compact'
+			, macros = true
+		} = config
+
+		if (abi_format && abi_format !== 'compact') {
+			throw new Error(`${abi_format} is not a valid abi_format`)
 		}
-		const _config = {
-			abi_format: (typeof config.abi_format != 'undefined' ? config.abi_format : 'compact') // compact/full
-			, ml_format: (typeof config.ml_format != 'undefined' ? config.ml_format : 'compact') // compact, full, array
-			, macros: (typeof config.macros != 'undefined' ? config.macros : true)
+
+		if (ml_format && ml_format !== 'compact') {
+			throw new Error(`${ml_format} is not a valid ml_format`)
 		}
-		return core.compile.script(ml, _config)
+
+		if (macros && macros !== true) {
+			throw new Error(`${macros} is not a valid macros`)
+		}
+
+		return core.compile.script(ml, {
+			abi_format
+			, ml_format
+			, macros
+		})
 	}
 	, abi: core.abi
 	, version: '0.0.1b'
