@@ -1,34 +1,6 @@
 'use strict'
 
-const core = {
-	map: {}
-	, abi: {}
-	, literalTypes: [
-		'address'
-		, 'bool'
-		, 'bytes'
-		, 'int'
-		, 'key'
-		, 'key_hash'
-		, 'mutez'
-		, 'nat'
-		, 'operation'
-		, 'pkh'
-		, 'signature'
-		, 'string'
-		, 'timestamp'
-		, 'unit'
-	]
-	, complexTypes: [
-		'big_map'
-		, 'contract'
-		, 'list'
-		, 'map'
-		, 'option'
-		, 'set'
-	]
-}
-
+const core = require('./lib/core')
 core.sha256 = require('js-sha256')
 core.helper = require('./lib/helper')
 core.parse = require('./lib/parse')(core)
