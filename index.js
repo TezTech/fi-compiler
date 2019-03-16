@@ -5,7 +5,7 @@ core.sha256 = require('js-sha256')
 core.helper = require('./lib/helper')
 core.parse = require('./lib/parse')(core)
 core.compile = require('./lib/compile')(core)
-core.abi = require('./lib/abi')(core)
+core.abi = require('./lib/abi')
 
 module.exports = {
 	compile(ml, config = {}) {

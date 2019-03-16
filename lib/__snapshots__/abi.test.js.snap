@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ABI entry returns packed bytes 1`] = `"0xbadd95b105030b"`;
+
+exports[`ABI loads valid ABI 1`] = `"{\\"entry\\":[{\\"name\\":\\"Blank\\",\\"id\\":\\"0xbadd95b1\\",\\"input\\":[],\\"temp\\":[],\\"code\\":[]}]}"`;
