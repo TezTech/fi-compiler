@@ -50,13 +50,13 @@ Object {
 
 exports[`Compiler input sample compiles correctly 1`] = `
 Object {
-  "abi": "{\\"storage\\":[{\\"name\\":\\"test\\",\\"type\\":[\\"nat\\"]}],\\"entry\\":[{\\"name\\":\\"TestInput\\",\\"id\\":\\"0x9e642eca\\",\\"input\\":[{\\"name\\":\\"test1\\",\\"type\\":[\\"nat\\"]}],\\"temp\\":[],\\"code\\":[[\\"set\\",\\"storage.test\\",[\\"input.test1\\"]]]}]}",
+  "abi": "{\\"storage\\":[{\\"name\\":\\"test\\",\\"type\\":[\\"nat\\"]}],\\"entry\\":[{\\"name\\":\\"TestInputSimple\\",\\"id\\":\\"0x3715546e\\",\\"input\\":[{\\"name\\":\\"boolLabel\\",\\"type\\":[\\"bool\\"]},{\\"name\\":\\"natLabel\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"intLabel\\",\\"type\\":[\\"int\\"]},{\\"name\\":\\"stringLabel\\",\\"type\\":[\\"string\\"]},{\\"name\\":\\"mutezLabel\\",\\"type\\":[\\"mutez\\"]},{\\"name\\":\\"addressLabel\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"keyLabel\\",\\"type\\":[\\"key\\"]},{\\"name\\":\\"pkhLabel\\",\\"type\\":[\\"key_hash\\"]},{\\"name\\":\\"signatureLabel\\",\\"type\\":[\\"signature\\"]},{\\"name\\":\\"bytesLabel\\",\\"type\\":[\\"bytes\\"]}],\\"temp\\":[],\\"code\\":[[\\"set\\",\\"storage.test\\",[\\"input.natLabel\\"]]]}]}",
   "config": Object {
     "abi_format": "compact",
     "macros": true,
     "ml_format": "compact",
   },
-  "ml": "parameter bytes;storage nat;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x9e642eca;COMPARE;EQ;IF{DROP;DUP;SIZE;PUSH nat 4;SWAP;SUB;DUP;GT;IF{}{PUSH nat 102;FAILWITH};ABS;PUSH nat 4;SLICE;IF_NONE{PUSH nat 101;FAILWITH}{};UNPACK nat;IF_NONE{PUSH nat 103;FAILWITH}{};PAIR;DUP;CAR;SWAP;SET_CDDR;CDR}{DROP;PUSH nat 400;FAILWITH}}",
+  "ml": "parameter bytes;storage nat;code{DUP;CDR;NIL operation;PAIR;SWAP;CAR;DUP;PUSH nat 4;PUSH nat 0;SLICE;IF_NONE{PUSH nat 100;FAILWITH}{};DUP;PUSH bytes 0x3715546e;COMPARE;EQ;IF{DROP;DUP;SIZE;PUSH nat 4;SWAP;SUB;DUP;GT;IF{}{PUSH nat 102;FAILWITH};ABS;PUSH nat 4;SLICE;IF_NONE{PUSH nat 101;FAILWITH}{};UNPACK (pair bool (pair nat (pair int (pair string (pair mutez (pair address (pair key (pair key_hash (pair signature bytes)))))))));IF_NONE{PUSH nat 103;FAILWITH}{};PAIR;DUP;CADAR;SWAP;SET_CDDR;CDR}{DROP;PUSH nat 400;FAILWITH}}",
 }
 `;
 

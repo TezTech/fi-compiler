@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ABI entry returns packed bytes 1`] = `"0xbadd95b105030b"`;
+exports[`ABI entry returns packed bytes 1`] = `"0x3715546e050707030a0707009213070700ee5807070100000006737472696e67070700a80f0707010000000761646472657373070701000000036b657907070100000003706b68070701000000097369676e61747572650369"`;
 
-exports[`ABI loads valid ABI 1`] = `"{\\"entry\\":[{\\"name\\":\\"Blank\\",\\"id\\":\\"0xbadd95b1\\",\\"input\\":[],\\"temp\\":[],\\"code\\":[]}]}"`;
+exports[`ABI loads valid ABI 1`] = `"{\\"storage\\":[{\\"name\\":\\"test\\",\\"type\\":[\\"nat\\"]}],\\"entry\\":[{\\"name\\":\\"TestInputSimple\\",\\"id\\":\\"0x3715546e\\",\\"input\\":[{\\"name\\":\\"boolLabel\\",\\"type\\":[\\"bool\\"]},{\\"name\\":\\"natLabel\\",\\"type\\":[\\"nat\\"]},{\\"name\\":\\"intLabel\\",\\"type\\":[\\"int\\"]},{\\"name\\":\\"stringLabel\\",\\"type\\":[\\"string\\"]},{\\"name\\":\\"mutezLabel\\",\\"type\\":[\\"mutez\\"]},{\\"name\\":\\"addressLabel\\",\\"type\\":[\\"address\\"]},{\\"name\\":\\"keyLabel\\",\\"type\\":[\\"key\\"]},{\\"name\\":\\"pkhLabel\\",\\"type\\":[\\"key_hash\\"]},{\\"name\\":\\"signatureLabel\\",\\"type\\":[\\"signature\\"]},{\\"name\\":\\"bytesLabel\\",\\"type\\":[\\"bytes\\"]}],\\"temp\\":[],\\"code\\":[[\\"set\\",\\"storage.test\\",[\\"input.natLabel\\"]]]}]}"`;
