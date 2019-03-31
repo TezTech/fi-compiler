@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ABI Helpers transforms all to sexp, micheline and raw bytes 1`] = `"Unit"`;
+
+exports[`ABI Helpers transforms all to sexp, micheline and raw bytes 2`] = `
+Object {
+  "args": Array [],
+  "prim": "Unit",
+}
+`;
+
+exports[`ABI Helpers transforms all to sexp, micheline and raw bytes 3`] = `"05030b"`;
+
+exports[`ABI Helpers transforms input to sexp, micheline and raw bytes 1`] = `"(Pair True (Pair 1234 (Pair -5678 (Pair \\"string\\" (Pair 1000 (Pair \\"address\\" (Pair \\"key\\" (Pair \\"pkh\\" (Pair \\"signature\\" bytes)))))))))"`;
+
+exports[`ABI Helpers transforms input to sexp, micheline and raw bytes 2`] = `
+Object {
+  "args": Array [
+    Object {
+      "args": Array [],
+      "prim": "True",
+    },
+    Object {
+      "args": Array [
+        Object {
+          "int": "1234",
+        },
+        Object {
+          "args": Array [
+            Object {
+              "int": "-5678",
+            },
+            Object {
+              "args": Array [
+                Object {
+                  "string": "string",
+                },
+                Object {
+                  "args": Array [
+                    Object {
+                      "int": "1000",
+                    },
+                    Object {
+                      "args": Array [
+                        Object {
+                          "string": "address",
+                        },
+                        Object {
+                          "args": Array [
+                            Object {
+                              "string": "key",
+                            },
+                            Object {
+                              "args": Array [
+                                Object {
+                                  "string": "pkh",
+                                },
+                                Object {
+                                  "args": Array [
+                                    Object {
+                                      "string": "signature",
+                                    },
+                                    Object {
+                                      "args": Array [],
+                                      "prim": "bytes",
+                                    },
+                                  ],
+                                  "prim": "Pair",
+                                },
+                              ],
+                              "prim": "Pair",
+                            },
+                          ],
+                          "prim": "Pair",
+                        },
+                      ],
+                      "prim": "Pair",
+                    },
+                  ],
+                  "prim": "Pair",
+                },
+              ],
+              "prim": "Pair",
+            },
+          ],
+          "prim": "Pair",
+        },
+      ],
+      "prim": "Pair",
+    },
+  ],
+  "prim": "Pair",
+}
+`;
+
+exports[`ABI Helpers transforms input to sexp, micheline and raw bytes 3`] = `"050707030a0707009213070700ee5807070100000006737472696e67070700a80f0707010000000761646472657373070701000000036b657907070100000003706b68070701000000097369676e61747572650369"`;
